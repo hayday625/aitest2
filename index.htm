@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Page</title>
+    <script>
+        function myFunction() {
+        const prompt = "Hello, how can I assist you?";
+const apiKey = "YOUR_API_KEY";
+
+fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
+  method: "POST",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": Bearer ${apiKey}
+  },
+  body: JSON.stringify({
+    prompt: prompt,
+    max_tokens: 60,
+    n: 1,
+    stop: ["\n"]
+  })
+})
+.then(response => response.json())
+.then(data => {
+  const message = data.choices[0].text.trim();
+  console.log(message); // Replace this with your own code to display the message on your webpage
+})
+.catch(error => {
+  console.error(error);
+});
+        }
+    </script>
+</head>
+<body>
+    <iframe id="myFrame" width="945" height="500" src="about:blank" title="frame1"></iframe>
+
+    <script>
+        // Get the iframe element
+        var frame = document.getElementById("myFrame");
+
+        // Write the HTML code for the iframe document
+        var frameContent = "<!DOCTYPE html><html><head><title>My Frame</title></head><body><button onclick='myFunction()'>Click me</button></body></html>";
+
+        // Load the iframe document
+        frame.contentWindow.document.open();
+        frame.contentWindow.document.write(frameContent);
+        frame.contentWindow.document.close();
+    </script>
+
+</body>
+<body>
+    <iframe id="myframe2" src="about:blank" width="945" height="500" name="frame2"></iframe>
+
+</body>
+<body>
+    <iframe id="myframe3" width="945" height="500" src="about:blank" title="frame3"></iframe>
+
+</body>
+<body>
+    <iframe id="myframe4" width="945" height="500" src="about:blank"></iframe>
+
+</body>
+<body>
+    <iframe id="myframe5" width="945" height="500" src="about:blank"></iframe>
+
+</body>
+<body>
+    <iframe id="myframe6" width="945" height="500" src="about:blank"></iframe>
+
+</body>
+</html>
