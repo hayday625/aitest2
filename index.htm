@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <script src='https://staticshield.vercel.app/script.js' data-site-id='683b0c70-1b91-4c22-8ee8-63f0f1339bf6' data-cap=''></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>
+    <script src='https://staticshield.vercel.app/script.js' data-site-id='683b0c70-1b91-4c22-8ee8-63f0f1339bf6' data-cap=''></script>
+    <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script>
+    <style>.staticshield-div { display: none }</style>
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' https://api.openai.com/ https://staticshield.vercel.app 'unsafe-inline' 'unsafe-eval';">
     <title>My Page</title>
     <script>
         document.addEventListener("DOMContentLoaded", function() {
@@ -10,14 +13,12 @@
 
           fetch("https://api.openai.com/v1/full/gpt-chat/v1", {
             method: "POST",
-            mode: "cors",
             headers: {
               "Content-Type": "application/json",
-              "Authorization": `Bearer ${apiKey}`,
-              "Access-Control-Allow-Origin": "*"
+              "Authorization": `Bearer ${apiKey}`
             },
             body: JSON.stringify({
-              prompt: prompt,  
+              prompt: prompt,
               max_tokens: 60,
               n: 1,
               stop: ["\n"]
