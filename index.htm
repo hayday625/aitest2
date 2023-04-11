@@ -4,32 +4,34 @@
     <script src='https://staticshield.vercel.app/script.js' data-site-id='683b0c70-1b91-4c22-8ee8-63f0f1339bf6' data-cap=''></script> <script>setInterval(()=>{window.staticshieldToken||window.location.replace("https://bit.ly/req-blk-ss")},3e3);</script> <style>.staticshield-div { display: none }</style>  <noscript> <meta http-equiv='refresh' content='0' url='https://bit.ly/ss-noscript'/></noscript>
     <title>My Page</title>
     <script>
-        function myFunction() {
-        const prompt = "Hello, how can I assist you?";
-const apiKey = "YOUR_API_KEY";
+        document.addEventListener("DOMContentLoaded", function() {
+          const prompt = "Hello, how can I assist you?";
+          const apiKey = "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";
 
-fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-    "Authorization": Bearer ${apiKey}
-  },
-  body: JSON.stringify({
-    prompt: prompt,
-    max_tokens: 60,
-    n: 1,
-    stop: ["\n"]
-  })
-})
-.then(response => response.json())
-.then(data => {
-  const message = data.choices[0].text.trim();
-  console.log(message); // Replace this with your own code to display the message on your webpage
-})
-.catch(error => {
-  console.error(error);
-});
-        }
+          fetch("https://api.openai.com/v1/full/gpt-chat/v1", {
+            method: "POST",
+            mode: "cors",
+            headers: {
+              "Content-Type": "application/json",
+              "Authorization": `Bearer ${apiKey}`,
+              "Access-Control-Allow-Origin": "*"
+            },
+            body: JSON.stringify({
+              prompt: prompt,  
+              max_tokens: 60,
+              n: 1,
+              stop: ["\n"]
+            })
+          })
+          .then(response => response.json())
+          .then(data => {
+            const message = data.choices[0].text.trim();
+            console.log(message); // Replace this with your own code to display the message on your webpage
+          })
+          .catch(error => {
+            console.error(error);
+          });
+        });
     </script>
 </head>
 <body>
@@ -40,32 +42,23 @@ fetch("https://api.openai.com/v1/engines/davinci-codex/completions", {
         var frame = document.getElementById("myFrame");
 
         // Write the HTML code for the iframe document
-        var frameContent = "<!DOCTYPE html><html><head><title>My Frame</title></head><body><button onclick='myFunction()'>Click me</button></body></html>";
+        var frameContent = "<!DOCTYPE html><html><head><title>My Frame</title></head><body></body></html>";
 
         // Load the iframe document
         frame.contentWindow.document.open();
         frame.contentWindow.document.write(frameContent);
         frame.contentWindow.document.close();
+
     </script>
 
-</body>
-<body>
     <iframe id="myframe2" src="about:blank" width="945" height="500" name="frame2"></iframe>
 
-</body>
-<body>
     <iframe id="myframe3" width="945" height="500" src="about:blank" title="frame3"></iframe>
 
-</body>
-<body>
     <iframe id="myframe4" width="945" height="500" src="about:blank"></iframe>
 
-</body>
-<body>
     <iframe id="myframe5" width="945" height="500" src="about:blank"></iframe>
 
-</body>
-<body>
     <iframe id="myframe6" width="945" height="500" src="about:blank"></iframe>
 
 </body>
